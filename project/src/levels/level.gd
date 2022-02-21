@@ -1,14 +1,15 @@
 extends Node2D
 
+enum TILES {
+	PORTABLE_SURFACE,
+	NON_PORTABLE_SURFACE,
+	GREEN_LASER_H,
+	GREEN_LASER_V,
+	RED_LASER_H,
+	RED_LASER_V	
+}
 const MAP_SIZE = Vector2(21,12)
 const TILE_SIZE = 130
-const PORTABLE_SURFACE = 0
-const NON_PORTABLE_SURFACE = 1
-const GREEN_LASER_H = 2
-const GREEN_LASER_V = 3
-const RED_LASER_H = 4
-const RED_LASER_V = 5
-const ENERGY_FIELD = 6
 var objects = {
 	"portable_surface" : preload("res://src/objects/portable_surface.tscn")	
 }
@@ -21,7 +22,7 @@ func _ready() -> void:
 			var obj = null
 			
 			match tileID:
-				PORTABLE_SURFACE:
+				TILES.PORTABLE_SURFACE:
 					obj = objects["portable_surface"].instance()
 							
 			if (obj != null):
